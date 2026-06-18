@@ -2,9 +2,11 @@ import {
   LayoutDashboard, BookOpen, ClipboardList, BookMarked, FileText, TrendingUp,
   CalendarDays, Calendar, Users, UserCheck, Megaphone, AlertTriangle,
   CreditCard, CalendarClock, ClipboardCheck, FileStack, Trophy, BarChart3,
-  MessageSquare, FileCheck, CalendarRange, UserX, RefreshCw, Star,
-  GraduationCap, UserPlus, Receipt, AlertCircle, Newspaper, Building2,
-  Settings, type LucideIcon,
+  MessageSquare, FileCheck, CalendarRange, RefreshCw, Star,
+  GraduationCap, UserPlus, AlertCircle, Newspaper, Settings,
+  School, Monitor, Database, ScrollText, BookUser, KeyRound, Clock, LogIn,
+  Target, Layout, FileBarChart, GitBranch, Gauge, UserSearch, Download,
+  type LucideIcon,
 } from "lucide-react";
 import type { RoleId } from "./roles";
 
@@ -20,6 +22,36 @@ export interface NavSection {
 }
 
 export const NAV_CONFIG: Record<RoleId, NavSection[]> = {
+  super_admin: [
+    { title: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, slug: "" }] },
+    { title: "Management", items: [
+      { label: "School Management", icon: School, slug: "schools" },
+      { label: "User Management", icon: Users, slug: "users" },
+    ]},
+    { title: "System", items: [
+      { label: "System Monitor", icon: Monitor, slug: "monitor" },
+      { label: "Database Backup", icon: Database, slug: "backup" },
+      { label: "Audit Logs", icon: ScrollText, slug: "audit-logs" },
+    ]},
+  ],
+  school_admin: [
+    { title: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, slug: "" }] },
+    { title: "People", items: [
+      { label: "Student Management", icon: GraduationCap, slug: "students" },
+      { label: "Admission Management", icon: UserPlus, slug: "admissions", badge: 14 },
+      { label: "Teacher Management", icon: BookUser, slug: "teachers" },
+      { label: "User Accounts", icon: KeyRound, slug: "accounts" },
+    ]},
+    { title: "Operations", items: [
+      { label: "Fee Management", icon: CreditCard, slug: "fees" },
+      { label: "Certificate Generator", icon: FileText, slug: "certificates" },
+      { label: "Timetable Publishing", icon: Clock, slug: "timetable" },
+      { label: "Reports", icon: BarChart3, slug: "reports" },
+    ]},
+    { title: "Credentials", items: [
+      { label: "Login Credential Center", icon: LogIn, slug: "credentials" },
+    ]},
+  ],
   student: [
     { title: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, slug: "" }] },
     { title: "Academics", items: [
@@ -40,6 +72,7 @@ export const NAV_CONFIG: Record<RoleId, NavSection[]> = {
       { label: "Remarks & Conduct", icon: AlertTriangle, slug: "remarks" },
       { label: "Fee Status", icon: CreditCard, slug: "fee-status" },
       { label: "Parent Meeting", icon: CalendarClock, slug: "parent-meeting" },
+      { label: "My Documents", icon: Download, slug: "documents" },
     ]},
   ],
   faculty: [
@@ -49,6 +82,7 @@ export const NAV_CONFIG: Record<RoleId, NavSection[]> = {
       { label: "Attendance Management", icon: UserCheck, slug: "attendance" },
       { label: "Homework Allocation", icon: BookMarked, slug: "homework" },
       { label: "Assignment Manager", icon: FileStack, slug: "assignments", badge: 12 },
+      { label: "Student Profiles", icon: UserSearch, slug: "student-profiles" },
     ]},
     { title: "Academics", items: [
       { label: "Timetable", icon: CalendarDays, slug: "timetable" },
@@ -73,10 +107,13 @@ export const NAV_CONFIG: Record<RoleId, NavSection[]> = {
       { label: "Faculty Attendance", icon: UserCheck, slug: "faculty-attendance" },
       { label: "Substitute Allocation", icon: RefreshCw, slug: "substitute-allocation", badge: 1 },
       { label: "Faculty Performance", icon: Star, slug: "faculty-performance" },
+      { label: "Faculty Workload", icon: Gauge, slug: "workload" },
       { label: "Leave Management", icon: FileCheck, slug: "leave-management", badge: 3 },
     ]},
     { title: "Academics", items: [
       { label: "Timetable Management", icon: CalendarDays, slug: "timetable" },
+      { label: "Timetable Drafts", icon: GitBranch, slug: "timetable-drafts" },
+      { label: "Subject Allocation", icon: BookMarked, slug: "subject-allocation" },
       { label: "Curriculum Tracker", icon: BookOpen, slug: "curriculum" },
       { label: "Exam Schedule", icon: ClipboardList, slug: "exam-schedule" },
       { label: "Department Reports", icon: BarChart3, slug: "reports" },
@@ -88,33 +125,22 @@ export const NAV_CONFIG: Record<RoleId, NavSection[]> = {
     ]},
   ],
   principal: [
-    { title: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, slug: "" }] },
-    { title: "People", items: [
-      { label: "Student Management", icon: GraduationCap, slug: "student-management" },
-      { label: "Faculty Management", icon: Users, slug: "faculty-management" },
-      { label: "Admissions", icon: UserPlus, slug: "admissions", badge: 14 },
+    { title: "Overview", items: [{ label: "Overview", icon: LayoutDashboard, slug: "" }] },
+    { title: "Analytics", items: [
+      { label: "School Analytics", icon: BarChart3, slug: "analytics" },
+      { label: "Academic Performance", icon: TrendingUp, slug: "academic-performance" },
+      { label: "Faculty Performance", icon: Users, slug: "faculty-performance" },
+      { label: "Student Discipline", icon: AlertCircle, slug: "discipline" },
+      { label: "Attendance Trends", icon: UserCheck, slug: "attendance-trends" },
+      { label: "School KPIs", icon: Target, slug: "kpis" },
     ]},
-    { title: "Academics", items: [
-      { label: "Academic Reports", icon: BarChart3, slug: "academic-reports" },
-      { label: "Academic Calendar", icon: CalendarDays, slug: "academic-calendar" },
-      { label: "Exam Overview", icon: FileText, slug: "exam-overview" },
-    ]},
-    { title: "Finance", items: [
-      { label: "Financial Dashboard", icon: CreditCard, slug: "financial-dashboard" },
-      { label: "Fee Collection", icon: Receipt, slug: "fee-collection" },
-      { label: "Fee Defaulters", icon: AlertCircle, slug: "fee-defaulters", badge: 47 },
-    ]},
-    { title: "Administration", items: [
+    { title: "Operations", items: [
+      { label: "Announcements", icon: Megaphone, slug: "announcements" },
+      { label: "Academic Calendar", icon: CalendarRange, slug: "academic-calendar" },
+      { label: "Reports", icon: FileBarChart, slug: "reports" },
       { label: "Substitute Management", icon: RefreshCw, slug: "substitute-management" },
       { label: "Staff Leave Approval", icon: FileCheck, slug: "leave-approval", badge: 8 },
-      { label: "Conduct & Discipline", icon: AlertTriangle, slug: "conduct" },
-      { label: "Announcements", icon: Megaphone, slug: "announcements" },
-      { label: "Parent Communication", icon: MessageSquare, slug: "parent-communication" },
-      { label: "Noticeboard", icon: Newspaper, slug: "noticeboard" },
-    ]},
-    { title: "Infrastructure", items: [
-      { label: "Infrastructure Alerts", icon: Building2, slug: "infrastructure", badge: 3 },
-      { label: "School Settings", icon: Settings, slug: "settings" },
+      { label: "Noticeboard", icon: Layout, slug: "noticeboard" },
     ]},
   ],
 };

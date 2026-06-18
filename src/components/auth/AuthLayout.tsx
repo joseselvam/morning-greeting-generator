@@ -1,21 +1,18 @@
 import { useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
 import { GraduationCap } from "lucide-react";
 import { LeftPanel } from "./LeftPanel";
-import { TabSwitcher } from "./TabSwitcher";
 import { RoleSelector } from "./RoleSelector";
 import { ChangeRolePill } from "./ChangeRolePill";
 import type { RoleId } from "@/lib/roles";
 
 interface Props {
-  mode: "signin" | "signup";
+  mode: "signin";
   title: string;
   subtitle: string;
-  bottomPrompt: ReactNode;
   renderForm: (role: RoleId) => ReactNode;
 }
 
-export function AuthLayout({ mode, title, subtitle, bottomPrompt, renderForm }: Props) {
+export function AuthLayout({ title, subtitle, renderForm }: Props) {
   const [role, setRole] = useState<RoleId | null>(null);
 
   return (
@@ -26,8 +23,7 @@ export function AuthLayout({ mode, title, subtitle, bottomPrompt, renderForm }: 
         className="flex min-h-screen flex-col items-center justify-center bg-bg px-5 py-10 sm:px-8"
         style={{ animation: "var(--animate-fade-up)" }}
       >
-        <div className="w-full max-w-[480px]">
-          {/* Mobile wordmark */}
+        <div className="w-full max-w-[520px]">
           <div className="mb-8 flex items-center justify-center gap-2 md:hidden">
             <GraduationCap className="h-7 w-7 text-brand" />
             <span
@@ -37,8 +33,6 @@ export function AuthLayout({ mode, title, subtitle, bottomPrompt, renderForm }: 
               Baptist Academy
             </span>
           </div>
-
-          <TabSwitcher active={mode} />
 
           <div className="mb-7 text-center">
             <h2
@@ -60,15 +54,6 @@ export function AuthLayout({ mode, title, subtitle, bottomPrompt, renderForm }: 
               </>
             )}
           </div>
-
-          {/* Divider + bottom prompt */}
-          <div className="mt-7 flex items-center gap-3">
-            <span className="h-px flex-1 bg-border" />
-            <span className="text-[12px] uppercase tracking-wider text-muted-foreground">or</span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-
-          <p className="mt-5 text-center text-[14px] text-muted-foreground">{bottomPrompt}</p>
         </div>
 
         <p className="mt-8 text-center text-[11px] text-muted-foreground md:hidden">
@@ -76,16 +61,5 @@ export function AuthLayout({ mode, title, subtitle, bottomPrompt, renderForm }: 
         </p>
       </div>
     </div>
-  );
-}
-
-export function ToggleLink({ to, prefix, action }: { to: "/login" | "/signup"; prefix: string; action: string }) {
-  return (
-    <>
-      {prefix}{" "}
-      <Link to={to} className="font-bold text-brand transition-colors hover:text-brand-dark hover:underline">
-        {action}
-      </Link>
-    </>
   );
 }

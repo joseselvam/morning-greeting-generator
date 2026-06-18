@@ -1,6 +1,15 @@
-import { GraduationCap, BookOpen, Users, Crown, type LucideIcon } from "lucide-react";
+import {
+  GraduationCap, BookOpen, Users, Crown, ShieldAlert, Settings2,
+  type LucideIcon,
+} from "lucide-react";
 
-export type RoleId = "student" | "faculty" | "hof" | "principal";
+export type RoleId =
+  | "super_admin"
+  | "school_admin"
+  | "principal"
+  | "hof"
+  | "faculty"
+  | "student";
 
 export interface Role {
   id: RoleId;
@@ -9,10 +18,12 @@ export interface Role {
 }
 
 export const ROLES: Role[] = [
-  { id: "student", label: "Student", icon: GraduationCap },
-  { id: "faculty", label: "Faculty", icon: BookOpen },
-  { id: "hof", label: "Head of Faculty", icon: Users },
+  { id: "super_admin", label: "Super Admin", icon: ShieldAlert },
+  { id: "school_admin", label: "School Admin", icon: Settings2 },
   { id: "principal", label: "Principal", icon: Crown },
+  { id: "hof", label: "Head of Faculty", icon: Users },
+  { id: "faculty", label: "Faculty", icon: BookOpen },
+  { id: "student", label: "Student", icon: GraduationCap },
 ];
 
 export const getRole = (id: RoleId | null): Role | undefined =>

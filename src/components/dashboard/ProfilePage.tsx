@@ -177,9 +177,30 @@ export function ProfilePage({ initialTab }: { initialTab?: "profile" | "settings
           </Card>
         </div>
       )}
+
+      {/* Danger Zone */}
+      <div
+        className="rounded-2xl border-l-[3px] border-l-destructive bg-[rgba(239,68,68,0.04)] p-5 shadow-[var(--shadow-neumorphic-sm)]"
+      >
+        <div className="mb-1 flex items-center gap-2 text-destructive">
+          <AlertTriangle className="h-5 w-5" />
+          <h3 className="text-lg font-bold" style={{ fontFamily: "var(--font-display)" }}>Danger Zone</h3>
+        </div>
+        <p className="mb-4 text-sm text-muted-foreground">
+          Deactivating your account archives all your data. This action cannot be undone.
+        </p>
+        <button
+          type="button"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-[1.5px] border-destructive bg-transparent px-4 py-2.5 text-sm font-semibold text-destructive transition-all hover:bg-destructive/5 sm:w-auto"
+        >
+          <AlertTriangle className="h-4 w-4" />
+          Deactivate Account
+        </button>
+      </div>
     </PageWrap>
   );
 }
+
 
 const inputCls = "w-full rounded-xl border-[1.5px] border-[rgba(25,27,223,0.12)] bg-bg px-3.5 py-2.5 text-sm text-ink placeholder:text-muted-foreground shadow-[inset_2px_2px_6px_#d6d4cf,inset_-2px_-2px_6px_#ffffff] transition-all focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/15";
 function Field({ label, children }: { label: string; children: React.ReactNode }) {

@@ -3,7 +3,7 @@ import {
   GraduationCap, Users, Activity, Server, Database, Globe, ShieldCheck,
   Cpu, MemoryStick, HardDrive, UserPlus, KeyRound, LogIn, Edit, Shield, TrendingUp,
 } from "lucide-react";
-import { OverviewCard, SectionHeader, Panel, ProgressBar } from "./primitives";
+import { OverviewCard, SectionHeader, Panel, ProgressBar } from "../primitives";
 
 export function SuperAdminHome() {
   const [now, setNow] = useState<Date>(() => new Date());

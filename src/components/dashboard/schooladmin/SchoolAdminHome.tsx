@@ -2,7 +2,7 @@ import {
   GraduationCap, Users, CreditCard, UserPlus, BookUser, FileText, Clock, BarChart3,
   TrendingUp, AlertCircle,
 } from "lucide-react";
-import { OverviewCard, SectionHeader, Panel, ProgressBar, BrandButton, StatusBadge } from "./primitives";
+import { OverviewCard, SectionHeader, Panel, ProgressBar, BrandButton, StatusBadge } from "../primitives";
 import { toast } from "sonner";
 
 export function SchoolAdminHome() {

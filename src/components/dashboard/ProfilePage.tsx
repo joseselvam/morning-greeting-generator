@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useParams } from "@tanstack/react-router";
 import {
   User, Mail, Phone, MapPin, Calendar, Briefcase, Lock, Bell, Globe, Eye,
-  EyeOff, Camera, Check, Shield, Palette, Moon, Sun, Smartphone,
+  EyeOff, Camera, Check, Shield, Palette, Moon, Sun, Smartphone, AlertTriangle,
 } from "lucide-react";
+
 import { PageWrap, PageHeader, SubHeader, Card, Chip, BrandBtn, GhostBtn } from "./student/_shared";
 import { ROLE_USERS } from "@/lib/mock-data";
 import type { RoleId } from "@/lib/roles";

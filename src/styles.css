@@ -129,3 +129,110 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ============================================================
+   Global neumorphic dropdown / select styling.
+   Applies to every native <select> + .neu-select utility for
+   Radix triggers and custom dropdown buttons.
+   ============================================================ */
+select,
+.neu-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 38px 10px 14px;
+  font-family: "Plus Jakarta Sans", var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23191BDF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px 16px;
+  border: 1.5px solid rgba(25, 27, 223, 0.12);
+  border-radius: 12px;
+  box-shadow: inset 2px 2px 6px #d6d4cf, inset -2px -2px 6px #ffffff;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 200ms ease;
+}
+select:hover,
+.neu-select:hover {
+  background-color: rgba(25, 27, 223, 0.04);
+  border-color: rgba(25, 27, 223, 0.2);
+}
+select:focus-visible,
+.neu-select:focus-visible,
+.neu-select[data-state="open"] {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow:
+    inset 2px 2px 6px #d6d4cf,
+    inset -2px -2px 6px #ffffff,
+    0 0 0 3px rgba(25, 27, 223, 0.18);
+}
+select:disabled,
+.neu-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #6b6f80;
+}
+select option {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  padding: 10px 14px;
+  font-weight: 400;
+}
+
+/* Neumorphic dropdown menu (Radix Select content & custom panels). */
+.neu-menu {
+  border-radius: 12px;
+  background-color: var(--color-surface);
+  border: 1px solid rgba(25, 27, 223, 0.12);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+}
+.neu-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 10px 14px;
+  font-family: "Plus Jakarta Sans", var(--font-sans);
+  font-size: 14px;
+  color: var(--color-ink);
+  border-bottom: 1px solid rgba(25, 27, 223, 0.08);
+  cursor: pointer;
+  transition: background-color 100ms ease, color 100ms ease;
+}
+.neu-menu-item:last-child { border-bottom: none; }
+.neu-menu-item:hover,
+.neu-menu-item[data-highlighted] {
+  background-color: rgba(25, 27, 223, 0.06);
+  outline: none;
+}
+.neu-menu-item[data-state="checked"],
+.neu-menu-item[aria-selected="true"] {
+  background-color: rgba(25, 27, 223, 0.12);
+  color: var(--color-brand);
+  font-weight: 500;
+  padding-left: 11px;
+  border-left: 3px solid var(--color-brand);
+}
+.neu-menu-item[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.neu-menu::-webkit-scrollbar { width: 6px; }
+.neu-menu::-webkit-scrollbar-track { background: rgba(25, 27, 223, 0.05); }
+.neu-menu::-webkit-scrollbar-thumb {
+  background: rgba(25, 27, 223, 0.3);
+  border-radius: 3px;
+}
+.neu-menu::-webkit-scrollbar-thumb:hover { background: rgba(25, 27, 223, 0.5); }
+
+

@@ -11,11 +11,14 @@ import { clearSession, getSession } from "@/lib/auth-helpers";
 import type { RoleId } from "@/lib/roles";
 
 const ROLE_TITLE: Record<RoleId, string> = {
+  super_admin: "Super Admin",
+  school_admin: "School Admin",
   student: "Student",
   faculty: "Faculty",
   hof: "Head of Faculty",
   principal: "Principal",
 };
+
 
 export function DashboardShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();

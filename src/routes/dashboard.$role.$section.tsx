@@ -17,6 +17,7 @@ import { EventsPage } from "@/components/dashboard/student/EventsPage";
 import { AnnouncementsPage } from "@/components/dashboard/student/AnnouncementsPage";
 import { ParentMeetingPage } from "@/components/dashboard/student/ParentMeetingPage";
 import { StudentTimetablePage } from "@/components/dashboard/student/TimetablePage";
+import { DocumentsPage } from "@/components/dashboard/student/DocumentsPage";
 
 // Faculty
 import {
@@ -25,6 +26,7 @@ import {
   FacultyAnnouncementsPage, FacultyParentMeetingPage, FacultyRemarksPage,
   FacultyLeaveRequestsPage, FacultyEventsPage,
 } from "@/components/dashboard/faculty/pages";
+import { StudentProfilesPage } from "@/components/dashboard/faculty/StudentProfilesPage";
 
 // HOF
 import {
@@ -33,16 +35,32 @@ import {
   CurriculumTrackerPage, ExamSchedulePage, DepartmentReportsPage,
   HofAnnouncementsPage, MeetingSchedulerPage, StudentEscalationsPage,
 } from "@/components/dashboard/hof/pages";
+import { TimetableDraftsPage, FacultyWorkloadPage, SubjectAllocationPage } from "@/components/dashboard/hof/extra-pages";
 
-// Principal
+// Principal (legacy + KPI)
 import {
-  StudentManagementPage, PrincipalFacultyManagementPage, AdmissionsPage,
-  AcademicReportsPage, AcademicCalendarPage, ExamOverviewPage,
-  FinancialDashboardPage, FeeCollectionPage, FeeDefaultersPage,
-  SubstituteManagementPage, StaffLeaveApprovalPage, ConductPage,
-  PrincipalAnnouncementsPage, ParentCommunicationPage, NoticeboardPage,
-  InfrastructurePage, SchoolSettingsPage,
+  AcademicCalendarPage, SubstituteManagementPage, StaffLeaveApprovalPage,
+  PrincipalAnnouncementsPage, NoticeboardPage,
 } from "@/components/dashboard/principal/pages";
+import {
+  PrincipalKpisPage, PrincipalAnalyticsPage, AcademicPerformancePage,
+  FacultyPerformancePrincipalPage, StudentDisciplinePage, AttendanceTrendsPage,
+  PrincipalReportsPage,
+} from "@/components/dashboard/principal/kpi-pages";
+
+// Super Admin
+import {
+  SchoolManagementPage, UserManagementPage, SystemMonitorPage,
+  DatabaseBackupPage, AuditLogsPage,
+} from "@/components/dashboard/superadmin/pages";
+
+// School Admin
+import {
+  StudentManagementPage as SAStudentManagementPage,
+  AdmissionManagementPage, TeacherManagementPage, UserAccountsPage,
+  FeeManagementPage, CertificateGeneratorPage, TimetablePublishingPage,
+  ReportsPage, CredentialCenterPage,
+} from "@/components/dashboard/schooladmin/pages";
 
 import { ProfilePage } from "@/components/dashboard/ProfilePage";
 import { NotificationsCenterPage } from "@/components/dashboard/NotificationsCenter";
@@ -53,70 +71,67 @@ export const Route = createFileRoute("/dashboard/$role/$section")({
 });
 
 const STUDENT_PAGES: Record<string, React.ComponentType> = {
-  marks: MarksPage,
-  attendance: AttendancePage,
-  assignments: AssignmentsPage,
-  homework: HomeworkPage,
-  "rank-holders": RankHoldersPage,
-  progress: ProgressPage,
-  "study-materials": StudyMaterialsPage,
-  "fee-status": FeeStatusPage,
-  remarks: RemarksPage,
-  events: EventsPage,
-  announcements: AnnouncementsPage,
-  "parent-meeting": ParentMeetingPage,
-  timetable: StudentTimetablePage,
+  marks: MarksPage, attendance: AttendancePage, assignments: AssignmentsPage,
+  homework: HomeworkPage, "rank-holders": RankHoldersPage, progress: ProgressPage,
+  "study-materials": StudyMaterialsPage, "fee-status": FeeStatusPage, remarks: RemarksPage,
+  events: EventsPage, announcements: AnnouncementsPage, "parent-meeting": ParentMeetingPage,
+  timetable: StudentTimetablePage, documents: DocumentsPage,
 };
 
 const FACULTY_PAGES: Record<string, React.ComponentType> = {
-  "mark-entry": MarkEntryPage,
-  attendance: FacultyAttendancePage,
-  homework: FacultyHomeworkPage,
-  assignments: FacultyAssignmentsPage,
-  timetable: FacultyTimetablePage,
-  "rank-computation": RankComputationPage,
-  reports: FacultyReportsPage,
-  "study-materials": FacultyStudyMaterialsPage,
-  announcements: FacultyAnnouncementsPage,
-  "parent-meeting": FacultyParentMeetingPage,
-  remarks: FacultyRemarksPage,
-  "leave-requests": FacultyLeaveRequestsPage,
-  events: FacultyEventsPage,
+  "mark-entry": MarkEntryPage, attendance: FacultyAttendancePage, homework: FacultyHomeworkPage,
+  assignments: FacultyAssignmentsPage, timetable: FacultyTimetablePage,
+  "rank-computation": RankComputationPage, reports: FacultyReportsPage,
+  "study-materials": FacultyStudyMaterialsPage, announcements: FacultyAnnouncementsPage,
+  "parent-meeting": FacultyParentMeetingPage, remarks: FacultyRemarksPage,
+  "leave-requests": FacultyLeaveRequestsPage, events: FacultyEventsPage,
+  "student-profiles": StudentProfilesPage,
 };
 
 const HOF_PAGES: Record<string, React.ComponentType> = {
-  "faculty-directory": FacultyDirectoryPage,
-  "faculty-attendance": FacultyAttendanceOverviewPage,
-  "substitute-allocation": SubstituteAllocationPage,
-  "faculty-performance": FacultyPerformancePage,
-  "leave-management": LeaveManagementPage,
-  timetable: TimetableManagementPage,
-  curriculum: CurriculumTrackerPage,
-  "exam-schedule": ExamSchedulePage,
-  reports: DepartmentReportsPage,
-  announcements: HofAnnouncementsPage,
-  meetings: MeetingSchedulerPage,
-  escalations: StudentEscalationsPage,
+  "faculty-directory": FacultyDirectoryPage, "faculty-attendance": FacultyAttendanceOverviewPage,
+  "substitute-allocation": SubstituteAllocationPage, "faculty-performance": FacultyPerformancePage,
+  "leave-management": LeaveManagementPage, timetable: TimetableManagementPage,
+  curriculum: CurriculumTrackerPage, "exam-schedule": ExamSchedulePage,
+  reports: DepartmentReportsPage, announcements: HofAnnouncementsPage,
+  meetings: MeetingSchedulerPage, escalations: StudentEscalationsPage,
+  "timetable-drafts": TimetableDraftsPage, workload: FacultyWorkloadPage,
+  "subject-allocation": SubjectAllocationPage,
 };
 
 const PRINCIPAL_PAGES: Record<string, React.ComponentType> = {
-  "student-management": StudentManagementPage,
-  "faculty-management": PrincipalFacultyManagementPage,
-  admissions: AdmissionsPage,
-  "academic-reports": AcademicReportsPage,
+  analytics: PrincipalAnalyticsPage,
+  "academic-performance": AcademicPerformancePage,
+  "faculty-performance": FacultyPerformancePrincipalPage,
+  discipline: StudentDisciplinePage,
+  "attendance-trends": AttendanceTrendsPage,
+  kpis: PrincipalKpisPage,
+  announcements: PrincipalAnnouncementsPage,
   "academic-calendar": AcademicCalendarPage,
-  "exam-overview": ExamOverviewPage,
-  "financial-dashboard": FinancialDashboardPage,
-  "fee-collection": FeeCollectionPage,
-  "fee-defaulters": FeeDefaultersPage,
+  reports: PrincipalReportsPage,
   "substitute-management": SubstituteManagementPage,
   "leave-approval": StaffLeaveApprovalPage,
-  conduct: ConductPage,
-  announcements: PrincipalAnnouncementsPage,
-  "parent-communication": ParentCommunicationPage,
   noticeboard: NoticeboardPage,
-  infrastructure: InfrastructurePage,
-  settings: SchoolSettingsPage,
+};
+
+const SUPER_ADMIN_PAGES: Record<string, React.ComponentType> = {
+  schools: SchoolManagementPage,
+  users: UserManagementPage,
+  monitor: SystemMonitorPage,
+  backup: DatabaseBackupPage,
+  "audit-logs": AuditLogsPage,
+};
+
+const SCHOOL_ADMIN_PAGES: Record<string, React.ComponentType> = {
+  students: SAStudentManagementPage,
+  admissions: AdmissionManagementPage,
+  teachers: TeacherManagementPage,
+  accounts: UserAccountsPage,
+  fees: FeeManagementPage,
+  certificates: CertificateGeneratorPage,
+  timetable: TimetablePublishingPage,
+  reports: ReportsPage,
+  credentials: CredentialCenterPage,
 };
 
 const PAGES: Record<RoleId, Record<string, React.ComponentType>> = {
@@ -124,6 +139,8 @@ const PAGES: Record<RoleId, Record<string, React.ComponentType>> = {
   faculty: FACULTY_PAGES,
   hof: HOF_PAGES,
   principal: PRINCIPAL_PAGES,
+  super_admin: SUPER_ADMIN_PAGES,
+  school_admin: SCHOOL_ADMIN_PAGES,
 };
 
 function SectionPage() {
@@ -132,7 +149,6 @@ function SectionPage() {
     section: string;
   };
 
-  // Profile & Settings are available to all roles
   if (section === "profile") return <ProfilePage initialTab="profile" />;
   if (section === "account-settings") return <ProfilePage initialTab="settings" />;
   if (section === "notifications-center") return <NotificationsCenterPage />;

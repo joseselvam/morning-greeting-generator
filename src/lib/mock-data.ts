@@ -1,11 +1,14 @@
 import type { RoleId } from "./roles";
 
 export const ROLE_USERS: Record<RoleId, { name: string; sub: string; initials: string }> = {
+  super_admin: { name: "Mr. Aditya Mehra", sub: "Super Administrator", initials: "AM" },
+  school_admin: { name: "Mrs. Anitha Reddy", sub: "School Administrator", initials: "AR" },
   student: { name: "Arjun Krishnamurthy", sub: "Class 11 — Section A", initials: "AK" },
   faculty: { name: "Mr. Rajesh Iyer", sub: "Mathematics Dept.", initials: "RI" },
   hof: { name: "Dr. Priya Venkatesan", sub: "Head — Sciences", initials: "PV" },
   principal: { name: "Dr. Samuel Devanand", sub: "Principal", initials: "SD" },
 };
+
 
 export const SUBJECT_COLORS: Record<string, string> = {
   Mathematics: "#191BDF",

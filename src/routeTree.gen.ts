@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as R500RouteImport } from './routes/500'
@@ -19,11 +18,6 @@ import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardRoleIndexRouteImport } from './routes/dashboard.$role.index'
 import { Route as DashboardRoleSectionRouteImport } from './routes/dashboard.$role.$section'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -71,7 +65,6 @@ export interface FileRoutesByFullPath {
   '/500': typeof R500Route
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/$role/$section': typeof DashboardRoleSectionRoute
   '/dashboard/$role/': typeof DashboardRoleIndexRoute
@@ -81,7 +74,6 @@ export interface FileRoutesByTo {
   '/403': typeof R403Route
   '/500': typeof R500Route
   '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/$role/$section': typeof DashboardRoleSectionRoute
   '/dashboard/$role': typeof DashboardRoleIndexRoute
@@ -93,7 +85,6 @@ export interface FileRoutesById {
   '/500': typeof R500Route
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/$role/$section': typeof DashboardRoleSectionRoute
   '/dashboard/$role/': typeof DashboardRoleIndexRoute
@@ -106,7 +97,6 @@ export interface FileRouteTypes {
     | '/500'
     | '/dashboard'
     | '/login'
-    | '/signup'
     | '/dashboard/'
     | '/dashboard/$role/$section'
     | '/dashboard/$role/'
@@ -116,7 +106,6 @@ export interface FileRouteTypes {
     | '/403'
     | '/500'
     | '/login'
-    | '/signup'
     | '/dashboard'
     | '/dashboard/$role/$section'
     | '/dashboard/$role'
@@ -127,7 +116,6 @@ export interface FileRouteTypes {
     | '/500'
     | '/dashboard'
     | '/login'
-    | '/signup'
     | '/dashboard/'
     | '/dashboard/$role/$section'
     | '/dashboard/$role/'
@@ -139,18 +127,10 @@ export interface RootRouteChildren {
   R500Route: typeof R500Route
   DashboardRoute: typeof DashboardRouteWithChildren
   LoginRoute: typeof LoginRoute
-  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -232,7 +212,6 @@ const rootRouteChildren: RootRouteChildren = {
   R500Route: R500Route,
   DashboardRoute: DashboardRouteWithChildren,
   LoginRoute: LoginRoute,
-  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

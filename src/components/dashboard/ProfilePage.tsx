@@ -9,15 +9,19 @@ import { ROLE_USERS } from "@/lib/mock-data";
 import type { RoleId } from "@/lib/roles";
 
 const ROLE_LABEL: Record<RoleId, string> = {
+  super_admin: "Super Admin", school_admin: "School Admin",
   student: "Student", faculty: "Faculty", hof: "Head of Faculty", principal: "Principal",
 };
 
 const ROLE_DETAILS: Record<RoleId, { dept: string; id: string; joined: string; phone: string; address: string }> = {
+  super_admin: { dept: "System Administration", id: "SA/2024/01", joined: "Jan 2024", phone: "+91 98000 11122", address: "Baptist Academy HQ, Chennai 600028" },
+  school_admin: { dept: "School Operations", id: "SCA/2024/01", joined: "Feb 2024", phone: "+91 98000 33344", address: "Baptist Academy Campus, Chennai 600028" },
   student: { dept: "Class 11 — Section A", id: "STU2026/1104", joined: "Jun 2023", phone: "+91 98765 43210", address: "12 Lloyd Road, Chennai 600006" },
   faculty: { dept: "Mathematics Department", id: "FAC/MAT/018", joined: "Aug 2020", phone: "+91 97456 11023", address: "44 Anna Salai, Chennai 600002" },
   hof: { dept: "Sciences Department", id: "HOF/SCI/004", joined: "Mar 2018", phone: "+91 98456 88723", address: "9 Greams Road, Chennai 600006" },
   principal: { dept: "Administration", id: "PRN/2014/01", joined: "Apr 2014", phone: "+91 99876 12340", address: "Baptist Academy Campus, Chennai 600028" },
 };
+
 
 export function ProfilePage({ initialTab }: { initialTab?: "profile" | "settings" } = {}) {
   const { role: roleParam } = useParams({ strict: false }) as { role?: RoleId };

@@ -11,7 +11,7 @@ export function RoleSelector({ selected, onSelect }: Props) {
       <p className="mb-4 text-center font-[family-name:var(--font-dm)] text-[12px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
         Select Your Role
       </p>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         {ROLES.map((role, idx) => {
           const Icon = role.icon;
           const isSelected = selected === role.id;
@@ -20,10 +20,10 @@ export function RoleSelector({ selected, onSelect }: Props) {
               key={role.id}
               type="button"
               onClick={() => onSelect(role.id)}
-              className="group glass relative flex h-[110px] flex-col items-center justify-center gap-2 rounded-2xl shadow-[var(--shadow-glass)] transition-all duration-[250ms] ease-[var(--ease-premium)] hover:scale-[1.02] hover:border-[#E8E9FF] hover:shadow-[var(--shadow-neumorphic-sm)]"
+              className="group glass relative flex h-[100px] flex-col items-center justify-center gap-1.5 rounded-2xl px-2 shadow-[var(--shadow-glass)] transition-all duration-[250ms] ease-[var(--ease-premium)] hover:scale-[1.02] hover:border-[#E8E9FF] hover:shadow-[var(--shadow-neumorphic-sm)]"
               style={{
                 animation: `var(--animate-stagger-in)`,
-                animationDelay: `${idx * 80}ms`,
+                animationDelay: `${idx * 60}ms`,
                 ...(isSelected
                   ? {
                       background: "rgba(25,27,223,0.06)",
@@ -36,11 +36,11 @@ export function RoleSelector({ selected, onSelect }: Props) {
               }}
             >
               <Icon
-                className="h-7 w-7 transition-colors"
+                className="h-6 w-6 transition-colors"
                 style={{ color: isSelected ? "#191BDF" : "#6B7280" }}
               />
               <span
-                className="font-[family-name:var(--font-dm)] text-[13px]"
+                className="text-center font-[family-name:var(--font-dm)] text-[12px] leading-tight"
                 style={{
                   color: isSelected ? "#191BDF" : "#6B7280",
                   fontWeight: isSelected ? 700 : 600,
